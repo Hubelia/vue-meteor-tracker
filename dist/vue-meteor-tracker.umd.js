@@ -1893,7 +1893,8 @@ var index = {
           var handle = void 0,
               unwatch = void 0;
           var subscribe = function subscribe(params) {
-            handle = _this4.$_subscribe.apply(_this4, [key].concat(toConsumableArray(params)));
+		  // if no params, prevent an error 'trying to convert null to object'
+            handle = params ? _this4.$_subscribe.apply(_this4, [key].concat(toConsumableArray(params))) : null;
           };
 
           if (typeof options === 'function') {
